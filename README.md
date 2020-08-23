@@ -8,6 +8,8 @@
     > webpack.config,所有loader，入口，输出等等都在此配置
     > 加载css：npm i -D style-loader css-loader;同时config中做配置
     > 图片处理：file-loader、url-loader，并在config中module设置
+    > 安装@babel/core @babel/cli @babel/preset-env @babel/polyfill，并在config中设置js处理
+    > 
     > 
 
 - npm初始化及包安装

@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -23,6 +24,18 @@ const getEntryPaths = paths => {
   return entries;
 }
 const fileEntries = getEntryPaths('src/*/app.js');
+const moduleFolders = fs.readdirSync('./src');
+const moduleHTML = [];
+moduleFolders.forEach(moduleName => {
+  moduleHTML.push(new HtmlWebpackPlugin({
+    title: moduleName,
+    template: './public/index.html',
+    filename: `${moduleName}.html`,
+    hash: false,
+    inject: 'body',
+    chunks: [moduleName]
+  }));
+});
 
 module.exports = {
   entry: fileEntries,
@@ -80,15 +93,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'demo',
-      template: './public/index.html',
-      filename: 'demo.html',
-      hash: false,
-      inject: 'body',
-      chunks: ['demo']
-    }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-  ]
+  ].concat(moduleHTML).filter(Boolean)
 }

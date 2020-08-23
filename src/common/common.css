@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: unset !important;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix::after {
+  content: '';
+  clear: both;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}

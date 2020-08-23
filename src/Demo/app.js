@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Main from './pages/Main/main';
 import Hello from './pages/Hello/hello';
+import '../common/common.css';
 
 ReactDOM.render(
   <HashRouter>

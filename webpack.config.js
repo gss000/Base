@@ -27,13 +27,14 @@ const fileEntries = getEntryPaths('src/*/app.js');
 const moduleFolders = fs.readdirSync('./src');
 const moduleHTML = [];
 moduleFolders.forEach(moduleName => {
+  const item = moduleName.charAt(0).toLowerCase() + moduleName.slice(1);
   moduleHTML.push(new HtmlWebpackPlugin({
-    title: moduleName,
+    title: item,
     template: './public/index.html',
-    filename: `${moduleName}.html`,
+    filename: `${item}.html`,
     hash: false,
     inject: 'body',
-    chunks: [moduleName]
+    chunks: [item]
   }));
 });
 
@@ -72,6 +73,9 @@ module.exports = {
                 options: {
                   importLoaders: 1
                 }
+              },
+              {
+                loader: require.resolve('less-loader'),
               },
               {
                 loader: require.resolve('postcss-loader'),

@@ -1,17 +1,44 @@
 import React from 'react';
-import Run from '../../components/run/index';
-import './main.css';
+import TodoList from '../../components/TodoList/index';
+import TodoInput from '../../components/TodoInput/index';
+import './main.less';
 
 export default class Main extends React.Component {
-  handleClick = () => {
-    
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			todoList: [],
+		};
+	}
 
-  render() {
-    return <section className="MainPage">
-      <h4>This is main page</h4>
-      <Run value="run 组件加载成功"/>
-      <button onClick={this.handleClick}>go</button>
-    </section>
-  }
+	handleClick = () => {
+		console.log('111');
+	};
+
+	handleAdd = value => {
+		console.log(value);
+		if (value) {
+			this.setState(preState => ({
+				todoList: preState.todoList.concat(value),
+			}));
+		}
+	};
+
+	handleCancel = () => {
+		this.setState({
+			todoList: [],
+		});
+	};
+
+	render() {
+		const { todoList } = this.state;
+		console.warn(todoList);
+		return (
+			<section className="MainPage">
+				<div className="head">totdo list</div>
+				<TodoInput handleAdd={this.handleAdd} handleCancel={this.handleCancel} />
+				<TodoList list={todoList} />
+			</section>
+		);
+	}
 }

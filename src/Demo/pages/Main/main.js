@@ -11,6 +11,31 @@ export default class Main extends React.Component {
 		};
 	}
 
+	componentDidMount() {
+		if (0) {
+			console.log(0);
+		} else if (1) {
+			console.log(1);
+		}
+
+		let a;
+		if (a) {
+			console.log('undefined');
+		} else {
+			console.log('不存在值');
+		}
+
+		if (1) {
+			var b = 'bbbb';
+			const c = 'cccc';
+			let d = 'dddd';
+		}
+
+		console.log(b);
+		console.log(c);
+		console.log(d);
+	}
+
 	handleClick = () => {
 		console.log('111');
 	};

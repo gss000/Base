@@ -31,9 +31,10 @@ export default class Main extends React.Component {
 			let d = 'dddd';
 		}
 
-		console.log(b);
-		console.log(c);
-		console.log(d);
+		// console.log(b);
+		// console.log(c);
+		// console.log(d);
+		var x = '原始值';
 	}
 
 	handleClick = () => {
@@ -50,10 +51,16 @@ export default class Main extends React.Component {
 	};
 
 	handleCancel = () => {
+		var x;
+		console.log(x);
 		this.setState({
 			todoList: [],
 		});
 	};
+
+	handleTest() {
+		console.log('点击');
+	}
 
 	render() {
 		const { todoList } = this.state;
@@ -63,6 +70,13 @@ export default class Main extends React.Component {
 				<div className="head">totdo list</div>
 				<TodoInput handleAdd={this.handleAdd} handleCancel={this.handleCancel} />
 				<TodoList list={todoList} />
+				<div
+					className="btn"
+					style={{ margin: '2rem', border: '1px solid #faa', cursor: 'pointer' }}
+					onClick={debounce(this.handleTest, 2000)}
+				>
+					点 击
+				</div>
 			</section>
 		);
 	}

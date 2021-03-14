@@ -1,4 +1,4 @@
-const { resolve } = require('../Base/javascript/promise');
+/* 通用工具类 */
 
 /**
  * 函数防抖
